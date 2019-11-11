@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pressable component renders correctly 1`] = `
+<View
+  accessible={true}
+  hitSlop={
+    Object {
+      "bottom": 10,
+      "left": 5,
+      "right": 5,
+      "top": 10,
+    }
+  }
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+/>
+`;
+
+exports[`Pressable component takes correct hitSlop renders as expected 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  hitSlop={
+    Object {
+      "bottom": 20,
+      "left": 20,
+      "right": 20,
+      "top": 20,
+    }
+  }
+  style={Object {}}
+/>
+`;
+
+exports[`Pressable component takes correct hitSlop renders as expected 2`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  hitSlop={
+    Object {
+      "bottom": 19,
+      "top": 12,
+    }
+  }
+  style={Object {}}
+/>
+`;
