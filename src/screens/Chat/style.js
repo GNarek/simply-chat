@@ -36,7 +36,6 @@ export const ChatWrapper = styled.View`
   flex-direction: column;
   flex: 1;
   height: 100%;
-  padding-top: 40;
   background: ${colors.screenBackground};
 `;
 

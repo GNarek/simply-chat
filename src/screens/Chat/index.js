@@ -3,7 +3,7 @@ import {KeyboardAvoidingView} from 'react-native';
 import moment from 'moment';
 
 import ChatMessages from './ChatMessages';
-import Pressable from '../components/common/pressable';
+import Pressable from '../../components/common/pressable';
 
 import {
   InputWrapper,
@@ -13,6 +13,7 @@ import {
   ChatBoxContainer,
   Triangle,
 } from './style';
+import Friend from '../Friends/Friend';
 
 const messagesHistory = [
   {
@@ -46,9 +47,18 @@ const messagesHistory = [
   },
 ];
 
-const Chat = props => {
+const Chat = ({navigation}) => {
+  const friend = navigation.getParam('friend');
+  const friendLetters = `${friend.firstname[0]}${friend.lastname[0]}`;
+  const mutatedMessages = messagesHistory.map(message => {
+    if (message.userId === 1) {
+      message.letters = friendLetters;
+    }
+
+    return message;
+  });
   const [typedText, setTypedText] = useState('');
-  const [messages, setMessages] = useState(messagesHistory);
+  const [messages, setMessages] = useState(mutatedMessages);
 
   const sendMessage = () => {
     if (typedText.length) {
@@ -56,7 +66,7 @@ const Chat = props => {
       const newMessage = {
         id: `id_${index}`,
         userId: index % 2 ? 1 : 2,
-        letters: 'GA',
+        letters: friendLetters,
         text: typedText,
         createdAt: moment().format('x'),
       };
@@ -68,6 +78,7 @@ const Chat = props => {
 
   return (
     <ChatWrapper>
+      <Friend friend={friend} />
       <ChatBoxContainer>
         <ChatMessages messages={messages} />
       </ChatBoxContainer>

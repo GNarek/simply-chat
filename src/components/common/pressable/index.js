@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-const Pressable = ({children, hitSlop, onPress, style}: Props) => (
+const Pressable = ({children, hitSlop, onPress, style}) => (
   <TouchableOpacity onPress={onPress} hitSlop={hitSlop} style={style}>
     {children}
   </TouchableOpacity>
