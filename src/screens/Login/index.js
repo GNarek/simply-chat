@@ -11,7 +11,7 @@ const Login = props => {
 
   return (
     <Wrapper>
-      <ActivityIndicator />
+      <ActivityIndicator size="large" color="#088" />
     </Wrapper>
   );
 };

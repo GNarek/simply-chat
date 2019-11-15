@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react';
-import {NavigationActions} from 'react-navigation';
 
 import {NAV_CHAT, NAV_CHAT_MODAL} from '../../navigation/constants';
 import {FriendWrapper, FriendImage, FriendName} from './style';
@@ -10,11 +9,7 @@ const Friends = ({friend, navigation}) => {
   }, [navigation, friend]);
 
   const navigateToModalChat = useCallback(() => {
-    navigation.navigate(
-      NAV_CHAT_MODAL,
-      {},
-      NavigationActions.navigate({routeName: NAV_CHAT, params: {friend}}),
-    );
+    navigation.navigate(NAV_CHAT_MODAL, {friend});
   }, [navigation, friend]);
 
   return (

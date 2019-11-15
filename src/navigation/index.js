@@ -6,24 +6,13 @@ import Friends from '../screens/Friends';
 import Login from '../screens/Login';
 
 import {NAV_FRIENDS, NAV_CHAT, NAV_LOGIN, NAV_CHAT_MODAL} from './constants';
-const ChatModalNavigator = createStackNavigator(
-  {
-    [NAV_CHAT]: {
-      screen: Chat,
-    },
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
-    initialRouteName: NAV_CHAT,
-  },
-);
+
 const ChatStackNavigator = createStackNavigator(
   {
     [NAV_FRIENDS]: {
       screen: Friends,
       navigationOptions: ({navigation}) => ({
-        headerTitle: 'Friends',
+        headerTitle: 'West World',
       }),
     },
     [NAV_CHAT]: {
@@ -43,10 +32,23 @@ const ChatStackNavigator = createStackNavigator(
   },
 );
 
+const ModalNavigator = createStackNavigator(
+  {
+    [NAV_FRIENDS]: ChatStackNavigator,
+    [NAV_CHAT_MODAL]: {
+      screen: Chat,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+    initialRouteName: NAV_FRIENDS,
+  },
+);
+
 const MainSwitch = createSwitchNavigator({
   [NAV_LOGIN]: Login,
-  [NAV_FRIENDS]: ChatStackNavigator,
-  [NAV_CHAT_MODAL]: ChatModalNavigator,
+  [NAV_FRIENDS]: ModalNavigator,
 });
 
 export default createAppContainer(MainSwitch);
